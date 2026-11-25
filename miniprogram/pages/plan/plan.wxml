@@ -1,0 +1,59 @@
+<view class="plan-container">
+  <view class="view-selector">
+    <view 
+      class="view-tab {{currentView === 'day' ? 'active' : ''}}" 
+      bindtap="onTabChange"
+      data-key="day"
+    >
+      日视图
+    </view>
+    <view 
+      class="view-tab {{currentView === 'week' ? 'active' : ''}}" 
+      bindtap="onTabChange"
+      data-key="week"
+    >
+      周视图
+    </view>
+  </view>
+
+  <picker 
+    mode="date" 
+    value="{{selectedDate}}" 
+    bindchange="onDateChange"
+    wx:if="{{currentView === 'day'}}"
+  >
+    <view class="date-picker">
+      <text>{{selectedDate}}</text>
+      <text class="arrow">▼</text>
+    </view>
+  </picker>
+
+  <view class="task-container">
+    <view wx:for="{{tasks}}" wx:key="taskId" class="task-card">
+      <view class="task-header">
+        <text class="task-title">{{item.title}}</text>
+        <view class="task-status {{item.status === 'COMPLETED' ? 'done' : ''}}">
+          {{item.status === 'COMPLETED' ? '已完成' : '待完成'}}
+        </view>
+      </view>
+      <view class="task-body">
+        <view class="task-row">
+          <text class="label">时间:</text>
+          <text class="value">{{item.plannedStartTime || '全天'}}</text>
+        </view>
+        <view class="task-row">
+          <text class="label">时长:</text>
+          <text class="value">{{item.plannedDuration}}分钟</text>
+        </view>
+        <view class="task-row" wx:if="{{item.actualDuration > 0}}">
+          <text class="label">实际:</text>
+          <text class="value">{{item.actualDuration}}分钟</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{tasks.length === 0}}" class="empty-state">
+      <text>暂无学习计划</text>
+    </view>
+  </view>
+</view>

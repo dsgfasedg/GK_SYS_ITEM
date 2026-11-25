@@ -1,0 +1,55 @@
+<view class="dashboard-container">
+  <view class="welcome-section">
+    <view class="welcome-info">
+      <text class="welcome-title">欢迎回来，同学！</text>
+      <text class="welcome-date">{{todayDate}}</text>
+    </view>
+    <view class="stats-row">
+      <view class="stat-card">
+        <text class="stat-number">{{todayTasks.length}}</text>
+        <text class="stat-label">今日任务</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{completedCount}}</text>
+        <text class="stat-label">已完成</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{completionRate}}%</text>
+        <text class="stat-label">完成率</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="task-section">
+    <view class="section-header">
+      <text class="section-title">今日学习计划</text>
+      <text class="section-action" bindtap="navigateToPlan">查看全部</text>
+    </view>
+    
+    <view class="task-list">
+      <view 
+        class="task-item {{task.status === 'COMPLETED' ? 'completed' : ''}}" 
+        wx:for="{{todayTasks}}" 
+        wx:key="taskId"
+        bindtap="completeTask"
+        data-id="{{task.taskId}}"
+      >
+        <view class="task-time">{{task.plannedStartTime || '--:--'}}</view>
+        <view class="task-content">
+          <view class="task-title">{{task.title}}</view>
+          <view class="task-meta">
+            <text class="task-duration">{{task.plannedDuration}}分钟</text>
+            <text class="task-status">{{task.status === 'COMPLETED' ? '已完成' : '待完成'}}</text>
+          </view>
+        </view>
+        <view class="task-status-icon {{task.status === 'COMPLETED' ? 'done' : ''}}">
+          <text wx:if="{{task.status === 'COMPLETED'}}">✓</text>
+        </view>
+      </view>
+      
+      <view wx:if="{{todayTasks.length === 0}}" class="empty-state">
+        <text>今日暂无学习计划</text>
+      </view>
+    </view>
+  </view>
+</view>

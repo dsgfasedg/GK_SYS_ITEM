@@ -1,0 +1,20 @@
+CREATE TABLE errors (
+    error_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    question_id BIGINT COMMENT '关联题库题目ID，可空',
+    stem TEXT NOT NULL,
+    options JSON,
+    correct_answer VARCHAR(10),
+    user_answer VARCHAR(10),
+    analysis VARCHAR(300),
+    knowledge_tags JSON,
+    user_error_tag VARCHAR(30) COMMENT '知识盲区/审题失误/计算错误/方法错误/时间不足/其他',
+    mastery TINYINT DEFAULT 0 COMMENT '掌握度0-100',
+    next_review_date DATE,
+    review_count INT DEFAULT 0,
+    source ENUM('photo','manual','exercise') DEFAULT 'photo',
+    image_url VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_user (user_id),
+    INDEX idx_review (user_id, next_review_date)
+);

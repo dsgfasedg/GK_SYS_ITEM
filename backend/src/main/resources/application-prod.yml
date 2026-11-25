@@ -1,0 +1,18 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  # 生产环境未使用 Redis / RabbitMQ，排除自动配置，避免连接不存在的服务
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    com.gk.zhixue: INFO

@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/dashboard/dashboard",
+    "pages/plan/plan",
+    "pages/note/note",
+    "pages/error/error",
+    "pages/essay/essay",
+    "pages/question/question",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "公考智学助手",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "iconPath": "assets/dashboard.png",
+        "selectedIconPath": "assets/dashboard-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/plan/plan",
+        "iconPath": "assets/plan.png",
+        "selectedIconPath": "assets/plan-active.png",
+        "text": "计划"
+      },
+      {
+        "pagePath": "pages/note/note",
+        "iconPath": "assets/note.png",
+        "selectedIconPath": "assets/note-active.png",
+        "text": "笔记"
+      },
+      {
+        "pagePath": "pages/error/error",
+        "iconPath": "assets/error.png",
+        "selectedIconPath": "assets/error-active.png",
+        "text": "错题"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "iconPath": "assets/profile.png",
+        "selectedIconPath": "assets/profile-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
